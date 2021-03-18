@@ -19,7 +19,7 @@ while (isRunning) {
   } else {
     console.log(chalk.red(`Désolé, ${userFirstName} ${userName}, vous êtes mineur, vous ne pouvez pas voter`))
   }
-  if (counter >= MAX_VOTERS) {
+  if (counter = MAX_VOTERS) {
     isRunning = false
   }
 }
