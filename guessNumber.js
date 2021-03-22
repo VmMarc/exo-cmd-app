@@ -35,19 +35,17 @@ if (userGuess === secretNumber){
 }
 
 if (userGuess < secretNumber){
-  ++counter
   console.log (chalk.red('Too small!'))
 }
 
 if (userGuess > secretNumber){
-  ++counter
   console.log ( chalk.red('Too big!'))
 }
 
-if (counter = MAX_CHANCES) {
+if (counter === MAX_CHANCES) {
   console.log('Game Over!')
   isRunning = false
-}
-}
 
-//problème au niveau du compteur.. 
+}
+++counter
+}
