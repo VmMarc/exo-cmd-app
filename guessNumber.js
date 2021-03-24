@@ -6,46 +6,38 @@ const MAX_CHANCES = 6
 if (process.argv.length !== 3) {
   console.log('usage: node guessNumber.js secretNumber')
   process.exit(1)
-}
-
-if (isNaN(process.argv[2])){
+  }else if (isNaN(process.argv[2])){
   console.log(`Error: Sorry "${process.argv[2]}" must be a number.`)
   process.exit(1)
-}else{
+  }else{
   isRunning = true
   counter = 1
-}
+  }
 
 const secretNumber = Number(process.argv[2])
 
 while (isRunning){
-  console.log(`You have ${counter}/6 tries to guess the right number.\nGood luck!`)
-  const userNb = readlineSync.question('What\'s the right number? ')
+  console.log(chalk.bold(`\nYou have ${counter}/6 tries to guess the right number.\n`))
+  const userNb = readlineSync.question(chalk.magenta.underline.bold('What\'s the right number? '))
   const userGuess = Number(userNb)
+  ++counter
 
-if (isNaN(userGuess)){
+  if (isNaN(userGuess)){
   console.log(`Error: ${process.argv[2]} is not a number`)
   process.exit(1)
   }
 
-
-if (userGuess === secretNumber){
-  console.log (chalk.green('You win!'))
-  isRunning = false
-}
-
-if (userGuess < secretNumber){
-  console.log (chalk.red('Too small!'))
-}
-
 if (userGuess > secretNumber){
-  console.log ( chalk.red('Too big!'))
+  console.log ( chalk.red.bold('Too big!'))
+}else if (userGuess < secretNumber){
+  console.log (chalk.red.bold('Too small!'))
+}else{
+  console.log (chalk.green.bold.underline('You win!\n'))
+  isRunning = false
 }
 
 if (counter === MAX_CHANCES) {
   console.log('Game Over!')
   isRunning = false
-
 }
-++counter
 }
